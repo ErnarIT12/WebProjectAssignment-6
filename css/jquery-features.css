@@ -1,0 +1,330 @@
+/* Tasks 1-3: exercise search, autocomplete and FAQ highlighting */
+.jquery-search {
+    position: relative;
+    max-width: 520px;
+}
+
+.jquery-search .form-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    max-height: 288px;
+    margin: 4px 0 0;
+    padding: 4px;
+    overflow-y: auto;
+    list-style: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 45%);
+}
+
+.search-suggestion {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 44px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-suggestion small {
+    flex: none;
+    color: var(--muted);
+}
+
+.search-suggestion:hover,
+.search-suggestion.is-active {
+    background: var(--line);
+}
+
+.search-highlight {
+    padding: 0 2px;
+    border-radius: 3px;
+    background: var(--accent);
+    color: var(--accent-ink);
+}
+
+.search-empty {
+    padding: 24px;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    text-align: center;
+}
+
+.faq-search {
+    margin-bottom: 24px;
+}
+
+.faq-search-status {
+    min-height: 1.65em;
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Task 4: scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1080;
+    height: 6px;
+    background: rgb(255 255 255 / 8%);
+    pointer-events: none;
+}
+
+.scroll-progress-fill {
+    position: relative;
+    width: 0;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    background-image: linear-gradient(90deg, #a9f51b, #1bf5b0 35%, #1bb7f5 65%, #c04dff);
+    background-size: 100vw 100%;
+    box-shadow:
+        0 0 8px rgb(27 245 176 / 70%),
+        0 0 18px rgb(27 183 245 / 45%);
+}
+
+.scroll-progress-fill::after {
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    content: "";
+    transform: translateY(-50%);
+}
+
+.scroll-progress-fill[style*="width: 0%"]::after {
+    display: none;
+}
+
+/* Task 5: animated stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.stat-number {
+    display: block;
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+}
+
+/* Task 6: the spinner button keeps the brand color while disabled */
+.btn-primary:disabled {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+    opacity: 0.8;
+}
+
+/* Task 7: toast notifications */
+.toast-stack {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1090;
+    display: grid;
+    gap: 8px;
+    width: min(360px, calc(100vw - 32px));
+}
+
+.site-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+    box-shadow: 0 10px 24px rgb(0 0 0 / 45%);
+    color: var(--ink);
+}
+
+.site-toast p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.site-toast span {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+}
+
+.site-toast-error {
+    border-left-color: #ff8a80;
+}
+
+.site-toast-error span {
+    background: #ff8a80;
+    color: #2b0b08;
+}
+
+.site-toast svg,
+.copy-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
+
+/* Task 8: copy buttons */
+.copy-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.copy-row h4 {
+    margin: 0;
+}
+
+.copy-row-start {
+    justify-content: flex-start;
+}
+
+.copy-row-start .footer-email {
+    margin: 0;
+}
+
+.copy-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+    color: var(--ink);
+    font-size: 0.85rem;
+    transition:
+        border-color 180ms ease,
+        color 180ms ease;
+}
+
+.copy-button:hover,
+.copy-button.is-copied {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.copy-icon {
+    display: inline-grid;
+    place-items: center;
+}
+
+.copy-tooltip {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    z-index: 5;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+.copy-button.is-copied .copy-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Task 9: placeholder shown until the real image arrives */
+img.lazy-image,
+img.lazy-loading {
+    background: linear-gradient(
+        110deg,
+        var(--surface) 30%,
+        var(--surface-raised) 50%,
+        var(--surface) 70%
+    );
+    background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    img.lazy-image,
+    img.lazy-loading {
+        animation: lazy-shimmer 1.4s linear infinite;
+    }
+}
+
+@keyframes lazy-shimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .stat-card {
+        padding: 16px;
+    }
+}

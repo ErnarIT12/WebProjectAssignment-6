@@ -1,11 +1,13 @@
 "use strict";
 
+// Color palettes for the Background button.
 const backgroundThemes = [
     { name: "Forest", background: "#111715", surface: "#19221b", raised: "#253127" },
     { name: "Graphite", background: "#17191c", surface: "#202429", raised: "#2c3238" },
     { name: "Midnight", background: "#111c24", surface: "#192831", raised: "#253842" },
 ];
 
+// Each click moves to the next palette by changing the CSS variables and inline styles.
 function initializeBackgroundButton() {
     const button = document.querySelector("#change-background");
     if (!button) return;
@@ -19,6 +21,7 @@ function initializeBackgroundButton() {
         root.style.setProperty("--surface", theme.surface);
         root.style.setProperty("--surface-raised", theme.raised);
         document.body.style.backgroundColor = theme.background;
+        // Bootstrap needs the navbar color as "r, g, b", so the hex value is converted.
         document.querySelector(".navbar")?.style.setProperty(
             "--bs-dark-rgb",
             theme.background
@@ -35,6 +38,7 @@ function initializeBackgroundButton() {
     });
 }
 
+// Shows the visitor's local date and time and updates it every second.
 function initializeClock() {
     const clock = document.querySelector("#current-datetime");
     if (!clock) return;
@@ -61,6 +65,7 @@ function initializeClock() {
     window.setInterval(updateClock, 1000);
 }
 
+// FAQ: each question button opens or closes its answer panel.
 function initializeAccordion() {
     document.querySelectorAll(".faq-question").forEach((button) => {
         const panel = document.getElementById(button.getAttribute("aria-controls"));
@@ -68,12 +73,14 @@ function initializeAccordion() {
             const expanded = button.getAttribute("aria-expanded") !== "true";
             button.setAttribute("aria-expanded", String(expanded));
             panel.setAttribute("aria-hidden", String(!expanded));
+            // An inert panel stays out of the keyboard order while it is closed.
             panel.inert = !expanded;
             panel.classList.toggle("is-open", expanded);
         });
     });
 }
 
+// Returns the error message for a field, or an empty string when it is valid.
 function getFieldError(field, form) {
     const value = field.value.trim();
     const label = field.dataset.label || "This field";
@@ -106,6 +113,7 @@ function getFieldError(field, form) {
     return "";
 }
 
+// Shows or clears a field's error message and updates its invalid state.
 function showFieldError(field, message) {
     const errorId = field.type === "radio" ? "experience-error" : `${field.id}-error`;
     const error = document.getElementById(errorId);
@@ -115,6 +123,8 @@ function showFieldError(field, message) {
     else field.removeAttribute("aria-invalid");
 }
 
+// Validates the Contact form on submit. After that, errors update while the user types.
+// The multi-step form has its own logic in advanced.js.
 function initializeValidation() {
     document.querySelectorAll("form[data-validate]:not([data-multistep])").forEach((form) => {
         const fields = [
@@ -133,6 +143,7 @@ function initializeValidation() {
             submitted = true;
             const results = fields.map(validateField);
             if (results.includes(false)) {
+                // Cancelling the event also tells the spinner in script.js not to start.
                 event.preventDefault();
                 status.textContent = "Please correct the highlighted fields.";
                 fields[results.indexOf(false)].focus();
@@ -164,6 +175,7 @@ function initializeValidation() {
     });
 }
 
+// Opens and closes the Join GYMZONE popup, then returns focus to the button that opened it.
 function initializeProfileDialog() {
     const dialog = document.querySelector("#profile-dialog");
     if (!dialog) return;
@@ -179,6 +191,7 @@ function initializeProfileDialog() {
 
     dialog.querySelector("[data-close-profile]").addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (event) => {
+        // A click on the backdrop targets the dialog itself, so close only if it landed outside the box.
         if (event.target !== dialog) return;
         const bounds = dialog.getBoundingClientRect();
         const outside =

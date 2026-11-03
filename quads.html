@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/interactive.css" />
         <link rel="stylesheet" href="css/advanced.css" />
+        <link rel="stylesheet" href="css/jquery-features.css" />
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="js/jquery-fallback.js"></script>
+        <script src="js/script.js"></script>
     </head>
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -66,9 +70,10 @@
                     <div class="card-grid row g-4">
                         <article class="exercise-card">
                             <img
-                                src="images/Barbell Squat.gif"
+                                class="lazy-image"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/Barbell Squat.gif"
                                 alt="Barbell squat"
-                                loading="lazy"
                             />
                             <div class="exercise-content p-4">
                                 <h3>Barbell Squat</h3>
@@ -82,7 +87,7 @@
                             </div>
                         </article>
                         <article class="exercise-card">
-                            <img src="images/Leg Press.gif" alt="Leg press" loading="lazy" />
+                            <img class="lazy-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/Leg Press.gif" alt="Leg press" />
                             <div class="exercise-content p-4">
                                 <h3>Leg Press</h3>
                                 <p>Machine exercise focused on the quadriceps.</p>
@@ -96,9 +101,10 @@
                         </article>
                         <article class="exercise-card">
                             <img
-                                src="images/LEG-EXTENSION.gif"
+                                class="lazy-image"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/LEG-EXTENSION.gif"
                                 alt="Leg extension"
-                                loading="lazy"
                             />
                             <div class="exercise-content p-4">
                                 <h3>Leg Extension</h3>
@@ -125,7 +131,6 @@
                                 alt="GYMZONE"
                                 width="1024"
                                 height="285"
-                                loading="lazy"
                             />
                         </a>
                         <p class="mt-3 mb-0">

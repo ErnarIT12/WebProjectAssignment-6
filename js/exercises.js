@@ -1,5 +1,6 @@
 "use strict";
 
+// Exercise data and the methods used by the filters, gallery and search.
 const exerciseLibrary = {
     items: [
         {
@@ -85,10 +86,12 @@ const exerciseLibrary = {
         },
     ],
 
+    // Returns one exercise, or undefined if the id is unknown.
     findById(id) {
         return this.items.find((exercise) => exercise.id === id);
     },
 
+    // Returns the exercises for a filter button. An unknown category returns an empty list.
     getByCategory(category) {
         switch (category) {
             case "upper":
@@ -102,6 +105,7 @@ const exerciseLibrary = {
         }
     },
 
+    // Returns the text shown to the user for a category value.
     getCategoryLabel(category) {
         switch (category) {
             case "upper":

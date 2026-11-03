@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/interactive.css" />
         <link rel="stylesheet" href="css/advanced.css" />
+        <link rel="stylesheet" href="css/jquery-features.css" />
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="js/jquery-fallback.js"></script>
+        <script src="js/script.js"></script>
     </head>
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -94,15 +98,39 @@
                         />
                     </div>
                 </section>
+                <section class="section py-5" id="site-stats" aria-labelledby="stats-title">
+                    <div class="container">
+                        <h2 class="section-title" id="stats-title">GYMZONE IN NUMBERS</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number" data-count-target="21">21</span>
+                                <span class="stat-label">Exercise guides</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" data-count-target="63">63</span>
+                                <span class="stat-label">Technique steps</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" data-count-target="6">6</span>
+                                <span class="stat-label">Muscle groups</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" data-count-target="3">3</span>
+                                <span class="stat-label">Training categories</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="section py-5" id="categories">
                     <div class="container">
                         <h2 class="section-title">TRAINING CATEGORIES</h2>
                         <div class="media-card-group">
                             <a href="upper.html" class="media-card">
                                 <img
-                                    src="images/Bench Press.gif"
+                                    class="lazy-image"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Bench Press.gif"
                                     alt="Upper body training"
-                                    loading="lazy"
                                 />
                                 <div class="media-card-content p-4">
                                     <h3>Upper Body</h3>
@@ -114,9 +142,10 @@
                             </a>
                             <a href="lower.html" class="media-card">
                                 <img
-                                    src="images/Leg Press.gif"
+                                    class="lazy-image"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Leg Press.gif"
                                     alt="Lower body training"
-                                    loading="lazy"
                                 />
                                 <div class="media-card-content p-4">
                                     <h3>Lower Body</h3>
@@ -128,9 +157,10 @@
                             </a>
                             <a href="crossfit.html" class="media-card">
                                 <img
-                                    src="images/Burpees.gif"
+                                    class="lazy-image"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Burpees.gif"
                                     alt="CrossFit training"
-                                    loading="lazy"
                                 />
                                 <div class="media-card-content p-4">
                                     <h3>CrossFit</h3>
@@ -215,25 +245,28 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <img
-                                                src="images/Barbell-Bench-Press.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Barbell-Bench-Press.gif"
                                                 alt="Barbell bench press"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption"><h3>Bench Press</h3></div>
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Pull-up.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Pull-up.gif"
                                                 alt="Pull-up exercise"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption"><h3>Pull-Ups</h3></div>
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Overhead Press.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Overhead Press.gif"
                                                 alt="Overhead press"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption">
                                                 <h3>Overhead Press</h3>
@@ -241,9 +274,10 @@
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Barbell Squat.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Barbell Squat.gif"
                                                 alt="Barbell squat"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption">
                                                 <h3>Barbell Squat</h3>
@@ -251,17 +285,19 @@
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Leg Press.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Leg Press.gif"
                                                 alt="Leg press"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption"><h3>Leg Press</h3></div>
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Romanian Deadlift.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Romanian Deadlift.gif"
                                                 alt="Romanian deadlift"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption">
                                                 <h3>Romanian Deadlift</h3>
@@ -269,17 +305,19 @@
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Burpees.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Burpees.gif"
                                                 alt="Burpees"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption"><h3>Burpees</h3></div>
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Kettlebell Swing.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Kettlebell Swing.gif"
                                                 alt="Kettlebell swing"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption">
                                                 <h3>Kettlebell Swing</h3>
@@ -287,9 +325,10 @@
                                         </div>
                                         <div class="carousel-item">
                                             <img
-                                                src="images/Triceps Pushdown.gif"
+                                                class="lazy-image"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-src="images/Triceps Pushdown.gif"
                                                 alt="Triceps pushdown"
-                                                loading="lazy"
                                             />
                                             <div class="carousel-caption">
                                                 <h3>Triceps Pushdown</h3>
@@ -357,8 +396,30 @@
                     <div class="container">
                         <h2 class="section-title mb-4">EXERCISE EXPLORER</h2>
                         <p class="interactive-muted mb-4">
-                            Filter movements by training focus, then open a technique guide.
+                            Search or filter movements by training focus, then open a technique
+                            guide.
                         </p>
+                        <div class="jquery-search mb-3" role="search">
+                            <label class="form-label" for="exercise-search">Search exercises</label>
+                            <input
+                                class="form-control"
+                                id="exercise-search"
+                                type="search"
+                                placeholder="Try press, squat or back"
+                                autocomplete="off"
+                                role="combobox"
+                                aria-autocomplete="list"
+                                aria-expanded="false"
+                                aria-controls="exercise-suggestions"
+                            />
+                            <ul
+                                class="search-suggestions"
+                                id="exercise-suggestions"
+                                role="listbox"
+                                aria-label="Exercise suggestions"
+                                hidden
+                            ></ul>
+                        </div>
                         <div
                             class="exercise-filters mb-3"
                             role="group"
@@ -404,14 +465,17 @@
                         <p id="exercise-count" class="catalog-count mb-4" role="status">
                             Choose a training category below.
                         </p>
+                        <p class="search-empty" id="exercise-empty" hidden>
+                            No exercises match your search in this category.
+                        </p>
                         <div class="row g-4" id="exercise-results">
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <div class="card bootstrap-card h-100">
                                     <img
-                                        src="images/Bench Press.gif"
-                                        class="card-img-top"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/Bench Press.gif"
+                                        class="card-img-top lazy-image"
                                         alt="Upper body training"
-                                        loading="lazy"
                                     />
                                     <div class="card-body">
                                         <h3 class="card-title h4">Upper Body</h3>
@@ -428,10 +492,10 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <div class="card bootstrap-card h-100">
                                     <img
-                                        src="images/Leg Press.gif"
-                                        class="card-img-top"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/Leg Press.gif"
+                                        class="card-img-top lazy-image"
                                         alt="Lower body training"
-                                        loading="lazy"
                                     />
                                     <div class="card-body">
                                         <h3 class="card-title h4">Lower Body</h3>
@@ -448,10 +512,10 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <div class="card bootstrap-card h-100">
                                     <img
-                                        src="images/Burpees.gif"
-                                        class="card-img-top"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/Burpees.gif"
+                                        class="card-img-top lazy-image"
                                         alt="CrossFit training"
-                                        loading="lazy"
                                     />
                                     <div class="card-body">
                                         <h3 class="card-title h4">CrossFit</h3>
@@ -477,6 +541,17 @@
                 >
                     <div class="container">
                         <h2 class="section-title" id="faq-title">TRAINING QUESTIONS</h2>
+                        <div class="jquery-search faq-search" role="search">
+                            <label class="form-label" for="faq-search">Search the answers</label>
+                            <input
+                                class="form-control"
+                                id="faq-search"
+                                type="search"
+                                placeholder="Try exercise, form or equipment"
+                                autocomplete="off"
+                            />
+                            <p class="faq-search-status" id="faq-search-status" role="status"></p>
+                        </div>
                         <div class="faq-list">
                             <article class="faq-item">
                                 <h3 class="m-0">
@@ -605,7 +680,7 @@
                 </section>
                 <section class="section motivation py-5">
                     <div class="container">
-                        <img src="images/arnold1.jpg" alt="Motivational gym image" loading="lazy" />
+                        <img class="lazy-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/arnold1.jpg" alt="Motivational gym image" />
                         <blockquote>
                             “The resistance that you fight physically in the gym and the resistance
                             that you fight in life can only build a strong character.”
@@ -623,10 +698,10 @@
                         <div class="team-grid">
                             <article class="team-card py-4">
                                 <img
-                                    class="profile-img"
-                                    src="images/Yernar.jpg"
+                                    class="profile-img lazy-image"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Yernar.jpg"
                                     alt="Portrait of Umirgaliyev Yernar"
-                                    loading="lazy"
                                 />
                                 <div>
                                     <h3>Umirgaliyev Yernar</h3>
@@ -642,10 +717,10 @@
                             </article>
                             <article class="team-card py-4">
                                 <img
-                                    class="profile-img"
-                                    src="images/Kazybek.jpg"
+                                    class="profile-img lazy-image"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Kazybek.jpg"
                                     alt="Portrait of Kazybek Karabala"
-                                    loading="lazy"
                                 />
                                 <div>
                                     <h3>Kazybek Karabala</h3>
@@ -675,12 +750,13 @@
                         <div class="movement-gallery-layout">
                             <figure class="movement-display">
                                 <img
+class="lazy-image"
                                     id="gallery-display"
-                                    src="images/Barbell-Bench-Press.gif"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/Barbell-Bench-Press.gif"
                                     alt="Barbell bench press movement"
                                     width="600"
                                     height="400"
-                                    loading="lazy"
                                 />
                                 <figcaption class="p-4">
                                     <h3 id="gallery-title">Bench Press</h3>
@@ -722,7 +798,6 @@
                                     alt="GYMZONE"
                                     width="1024"
                                     height="285"
-                                    loading="lazy"
                                 />
                             </a>
                             <p class="mt-3 mb-0">

@@ -209,6 +209,13 @@ textarea:focus-visible {
     color: var(--ink);
 }
 
+/* Replaces Bootstrap's faint blue focus ring, so arrow-key navigation is easy to see */
+.navbar .nav-link:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
 .navbar .nav-link.active {
     border-color: var(--accent);
     color: var(--ink);

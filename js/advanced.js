@@ -1,11 +1,14 @@
 "use strict";
 
+// Arrow keys, Home and End move focus through the main menu.
 function initializeKeyboardNavigation() {
     const menu = document.querySelector(".navbar-nav");
     if (!menu) return;
 
     menu.addEventListener("keydown", (event) => {
+        // Key combinations stay with the browser, for example Alt+Left to go back.
         if (event.altKey || event.ctrlKey || event.metaKey) return;
+        // Only visible links count, so the collapsed mobile menu is skipped.
         const links = [...menu.querySelectorAll(".nav-link")].filter(
             (link) => link.getClientRects().length > 0,
         );
@@ -36,6 +39,7 @@ function initializeKeyboardNavigation() {
     });
 }
 
+// Builds one exercise card. The image stays a placeholder until script.js lazy-loads it.
 function createExerciseCard(exercise) {
     const column = document.createElement("div");
     column.className = "col-12 col-sm-6 col-lg-4 catalog-result";
@@ -44,10 +48,10 @@ function createExerciseCard(exercise) {
     const card = document.createElement("article");
     card.className = "card bootstrap-card h-100";
     const image = document.createElement("img");
-    image.className = "card-img-top";
-    image.src = exercise.image;
+    image.className = "card-img-top lazy-image";
+    image.src = LAZY_PLACEHOLDER;
+    image.dataset.src = exercise.image;
     image.alt = exercise.alt;
-    image.loading = "lazy";
 
     const body = document.createElement("div");
     body.className = "card-body";
@@ -69,6 +73,7 @@ function createExerciseCard(exercise) {
     return column;
 }
 
+// Category buttons rebuild the card list from exerciseLibrary.
 function initializeExerciseFilters() {
     const results = document.querySelector("#exercise-results");
     if (!results) return;
@@ -95,6 +100,7 @@ function initializeExerciseFilters() {
     renderCategory("all");
 }
 
+// Clicking a thumbnail changes the large image, its text and the guide link.
 function initializeMovementGallery() {
     const thumbnails = document.querySelector("#gallery-thumbnails");
     if (!thumbnails) return;
@@ -107,7 +113,9 @@ function initializeMovementGallery() {
     function selectExercise(id, animate = true) {
         const exercise = exerciseLibrary.findById(id);
         if (!exercise) return;
-        image.setAttribute("src", exercise.image);
+        // The first image waits for lazy loading. A click shows the new one at once.
+        image.dataset.src = exercise.image;
+        if (animate) image.setAttribute("src", exercise.image);
         image.setAttribute("alt", exercise.alt);
         title.textContent = exercise.name;
         description.textContent = exercise.description;
@@ -138,9 +146,10 @@ function initializeMovementGallery() {
         button.setAttribute("aria-label", `Show ${exercise.name}`);
         button.setAttribute("aria-controls", "gallery-display");
         const thumbnail = document.createElement("img");
-        thumbnail.src = exercise.image;
+        thumbnail.className = "lazy-image";
+        thumbnail.src = LAZY_PLACEHOLDER;
+        thumbnail.dataset.src = exercise.image;
         thumbnail.alt = "";
-        thumbnail.loading = "lazy";
         const label = document.createElement("span");
         label.textContent = exercise.name;
         button.append(thumbnail, label);
@@ -151,6 +160,8 @@ function initializeMovementGallery() {
     selectExercise(exerciseLibrary.items[0].id, false);
 }
 
+// Sound toggle. One audio element restarts on each play, so sounds never overlap.
+// Returns the function that plays the success sound.
 function initializeSoundEffects() {
     const audio = document.querySelector("#completion-sound");
     const button = document.querySelector("#toggle-sound");
@@ -186,6 +197,7 @@ function initializeSoundEffects() {
     return playSuccessSound;
 }
 
+// Three-step Join form. onSuccess is a callback that runs after a valid submit.
 function initializeMultistepForm(onSuccess) {
     const form = document.querySelector("#profile-form[data-multistep]");
     if (!form) return;
@@ -199,6 +211,7 @@ function initializeMultistepForm(onSuccess) {
     const review = form.querySelector("#profile-review");
     const state = { step: 0, attemptedStep: -1, completed: false };
 
+    // Returns true when all fields are valid. Otherwise it opens the step with the first error.
     function validateFields(selectedFields) {
         let firstInvalid;
         for (const field of selectedFields) {
@@ -251,6 +264,7 @@ function initializeMultistepForm(onSuccess) {
         if (focusHeading) steps[index].querySelector("legend").focus();
     }
 
+    // renderCallback draws the new step. Inputs stay in the page, so their values are kept.
     function navigateStep(direction, renderCallback) {
         if (state.completed) return;
         if (direction > 0) {
@@ -277,6 +291,7 @@ function initializeMultistepForm(onSuccess) {
         }
         if (!validateFields(fields)) return;
         state.completed = true;
+        // Passwords are not kept after the check.
         form.elements.password.value = "";
         form.elements.confirmPassword.value = "";
         status.textContent =
@@ -315,4 +330,7 @@ initializeKeyboardNavigation();
 initializeExerciseFilters();
 initializeMovementGallery();
 const playProfileSuccessSound = initializeSoundEffects();
-initializeMultistepForm(playProfileSuccessSound);
+initializeMultistepForm(() => {
+    playProfileSuccessSound();
+    showToast("Profile check complete. Nothing was saved.");
+});

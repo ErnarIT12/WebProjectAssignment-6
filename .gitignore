@@ -1,6 +1,3 @@
-# Agent skills and local AI configuration
-.agents/
-skills-lock.json
 
 # Assignment notes and source documents
 PLAN.md
@@ -16,5 +13,8 @@ Thumbs.db
 node_modules/
 *.log
 ASSIGNMENT5_CHECKLIST.md
-DEFENSE_Assignment5_RU.md
 GITHUB_COMMANDS.md
+
+# Assignment 6 local notes and submission archive
+DEFENSE_Assignment6_RU.md
+*.zip
