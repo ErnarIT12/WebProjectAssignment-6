@@ -2,7 +2,7 @@
 
 Static fitness website for SE-2508: Umirgaliyev Yernar and Kazybek Karabala.
 
-Live site: https://ernarit12.github.io/WebProjectAssignment-5/
+Live site: https://ernarit12.github.io/WebProjectAssignment-6/
 
 Open index.html in a modern browser or serve this folder with a local static server.
 No installation or build is required. Bootstrap, fonts, images and the sound are local.
@@ -34,24 +34,3 @@ exercise filters, movement gallery, keyboard navigation, multi-step form, sound 
 - css/advanced.css: layouts, selected states and event-triggered animations.
 - audio/success.wav: original short success sound generated locally.
 
-## Form and audio behavior
-
-The profile is a frontend demonstration. It creates no account, sends no signup data,
-and stores no password. Passwords are cleared after success, reset or closing the popup.
-The Contact form validates inputs, shows the spinner, then opens a configured email application.
-Sound starts muted. One audio element prevents overlap; playback requires user interaction.
-Animations respect reduced-motion preferences. Exercise images need JavaScript to load.
-
-## Verification
-
-Chromium through Playwright: all eleven pages at 320, 390, 768 and 1440 pixels (44 checks) for
-console errors, horizontal overflow, broken images, lazy loading and the progress bar.
-Tests also cover filter and category combinations, keyboard autocomplete, special characters in
-both search boxes, clipboard contents, the spinner, toasts inside the popup and the CDN fallback.
-Opening the real email application has to be checked by hand.
-
-## Publication
-
-The owner handles commit and push. The existing GitHub Pages workflow deploys every push to main.
-Submit the verified URL, Assignment 6 PDF report and project ZIP through LMS.
-Every member submits and attends the defense.

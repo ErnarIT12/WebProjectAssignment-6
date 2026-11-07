@@ -160,7 +160,7 @@ function initializeFaqHighlight() {
     if (!$input.length) return;
     const $status = $("#faq-search-status");
     const $items = $(".faq-item");
-    const $searchable = $items.find(".faq-question, .faq-answer p");
+    const $searchable = $items.find(".faq-question-text, .faq-answer p");
 
     function clearHighlights() {
         $searchable.find("mark.search-highlight").contents().unwrap();
@@ -265,7 +265,7 @@ function initializeStatCounters() {
     startWhenVisible();
 }
 
-// Task 6: spinner and disabled button, then the contact form continues to the email app.
+// Task 6: spinner and disabled button while a server call is simulated. There is no backend.
 function initializeSubmitSpinner() {
     const $form = $("#contact-form");
     if (!$form.length) return;
@@ -284,9 +284,10 @@ function initializeSubmitSpinner() {
 
         window.setTimeout(() => {
             $button.prop("disabled", false).removeAttr("aria-busy").html(label);
-            showToast("Form checked. Opening your email app.");
-            // The native submit() does not fire this handler again.
-            this.submit();
+            // reset() also clears the status line in main.js, so the message is written after it.
+            this.reset();
+            $form.find(".form-status").text("Thank you! This demo form does not send data to a server.");
+            showToast("Form submitted successfully.");
         }, 1800);
     });
 }

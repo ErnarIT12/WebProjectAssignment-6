@@ -150,7 +150,7 @@ function initializeValidation() {
                 return;
             }
 
-            status.textContent = "Your email app will open to send the message.";
+            status.textContent = "Sending your message...";
         });
 
         form.addEventListener("input", (event) => {

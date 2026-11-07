@@ -75,14 +75,14 @@ body,
     color: var(--accent);
 }
 
-.faq-question span {
+.faq-question span[aria-hidden="true"] {
     flex-shrink: 0;
     color: var(--accent);
     font-size: 1.6rem;
     transition: transform 250ms ease;
 }
 
-.faq-question[aria-expanded="true"] span {
+.faq-question[aria-expanded="true"] span[aria-hidden="true"] {
     transform: rotate(45deg);
 }
 
